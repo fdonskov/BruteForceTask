@@ -92,9 +92,9 @@
 			children = (
 				06D185AB287D851600EF5F67 /* OperationBruteForce.swift */,
 				06D185A4287D31FA00EF5F67 /* Extensions */,
-				06D18590287D2DAA00EF5F67 /* ViewController.swift */,
-				06D185A7287D7EE500EF5F67 /* View.swift */,
-				06D185A9287D848100EF5F67 /* Model.swift */,
+				06D185AD287D8AEF00EF5F67 /* Model */,
+				06D185AE287D8AF600EF5F67 /* View */,
+				06D185AF287D8AFA00EF5F67 /* Controller */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -114,6 +114,30 @@
 				06D185A5287D320F00EF5F67 /* StringExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		06D185AD287D8AEF00EF5F67 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				06D185A9287D848100EF5F67 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		06D185AE287D8AF600EF5F67 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				06D185A7287D7EE500EF5F67 /* View.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		06D185AF287D8AFA00EF5F67 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				06D18590287D2DAA00EF5F67 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

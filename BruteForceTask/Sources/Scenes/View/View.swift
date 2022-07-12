@@ -10,6 +10,12 @@ import UIKit
 class BruteForceView: UIView {
     
     // MARK: - Properties
+    var stackView: UIStackView = {
+        let stack = UIStackView()
+        stack.backgroundColor = .clear
+        return stack
+    }()
+    
     var labelPassword: UILabel = {
         let label = UILabel()
         label.numberOfLines = MetricSize.infoLabelNumberOfLines
@@ -56,15 +62,6 @@ class BruteForceView: UIView {
         return button
     }()
     
-    var buttonResetBruteForce: UIButton = {
-        let button = UIButton()
-        button.tintColor = .white
-        button.layer.cornerRadius = MetricSize.changeStatusButtonCornerRadius
-        button.backgroundColor = .blue
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
     // MARK: - Initial
     init() {
         super.init(frame: .zero)
@@ -78,72 +75,87 @@ class BruteForceView: UIView {
     
     // MARK: - SetupHierarchy
     func setupHierarchy() {
-        addSubview(labelPassword)
-        addSubview(activityIndicator)
-        addSubview(textFieldPassword)
-        addSubview(buttonChangingBackgroundColor)
-        addSubview(buttonStartBruteForce)
-        addSubview(buttonResetBruteForce)
+        backgroundColor = .white
+        addSubview(stackView)
+        
+        stackView.addSubview(activityIndicator)
+        stackView.addSubview(textFieldPassword)
+        stackView.addSubview(labelPassword)
+        stackView.addSubview(buttonStartBruteForce)
+        stackView.addSubview(buttonChangingBackgroundColor)
         
         createConstraints()
     }
     
     // MARK: - Create Constraints Method
     func createConstraints() {
+        constraintStackView()
         constraintLabelPassword()
         constraintActivityIndicator()
         constraintTextFieldPassword()
         constraintButtonChangingBackgroundColor()
         constraintButtonStartBruteForce()
-        constraintButtonResetBruteForce()
     }
     
     // MARK: - Create Constraints Elements
-    private func constraintLabelPassword() {
+   func constraintStackView() {
         NSLayoutConstraint.activate([
-            
+            stackView.topAnchor.constraint(equalTo: topAnchor, constant: MetricSize.stackViewTopAndLeadingAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: MetricSize.stackViewTopAndLeadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: MetricSize.stackViewTrailingAndBottomAnchor),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: MetricSize.stackViewTrailingAndBottomAnchor)
         ])
     }
     
-    private func constraintActivityIndicator() {
+    func constraintLabelPassword() {
         NSLayoutConstraint.activate([
-            
+            labelPassword.topAnchor.constraint(equalTo: buttonStartBruteForce.bottomAnchor, constant: MetricSize.infoLabelTopAnchorConstraint),
+            labelPassword.leadingAnchor.constraint(equalTo: textFieldPassword.leadingAnchor),
+            labelPassword.trailingAnchor.constraint(equalTo: textFieldPassword.trailingAnchor)
         ])
     }
     
-    private func constraintTextFieldPassword() {
+    func constraintActivityIndicator() {
         NSLayoutConstraint.activate([
-            
+            activityIndicator.topAnchor.constraint(equalTo: stackView.topAnchor, constant: MetricSize.activityIndicatorTopAnchorConstraint),
+            activityIndicator.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: MetricSize.activityIndicatorLeadingAnchorConstraint),
+            activityIndicator.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: MetricSize.activityIndicatorTrailingAnchorConstraint)
         ])
     }
     
-    private func constraintButtonChangingBackgroundColor() {
+    func constraintTextFieldPassword() {
         NSLayoutConstraint.activate([
-            
+            textFieldPassword.topAnchor.constraint(equalTo: activityIndicator.bottomAnchor, constant: MetricSize.textFieldTopAnchorConstraint),
+            textFieldPassword.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: MetricSize.textFieldLeadingAnchorConstraint),
+            textFieldPassword.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: MetricSize.textFieldTrailingAnchorConstraint)
         ])
     }
     
-    private func constraintButtonStartBruteForce() {
+    func constraintButtonChangingBackgroundColor() {
         NSLayoutConstraint.activate([
-            
+            buttonChangingBackgroundColor.topAnchor.constraint(equalTo: labelPassword.bottomAnchor, constant: MetricSize.buttonColorReplacementTopAnchorConstraint),
+            buttonChangingBackgroundColor.leadingAnchor.constraint(equalTo: textFieldPassword.leadingAnchor),
+            buttonChangingBackgroundColor.trailingAnchor.constraint(equalTo: textFieldPassword.trailingAnchor)
         ])
     }
     
-    private func constraintButtonResetBruteForce() {
+    func constraintButtonStartBruteForce() {
         NSLayoutConstraint.activate([
-            
+            buttonStartBruteForce.topAnchor.constraint(equalTo: textFieldPassword.bottomAnchor, constant: MetricSize.changeStatusButtonTopAnchorConstraint),
+            buttonStartBruteForce.leadingAnchor.constraint(equalTo: textFieldPassword.leadingAnchor),
+            buttonStartBruteForce.trailingAnchor.constraint(equalTo: textFieldPassword.trailingAnchor)
         ])
     }
 }
   
 // MARK: - MetricSize
 struct MetricSize {
-    static let stackViewTopAndLeadingAnchor: CGFloat = 8
-    static let stackViewTrailingAndBottomAnchor: CGFloat = -8
+    static let stackViewTopAndLeadingAnchor: CGFloat = 10
+    static let stackViewTrailingAndBottomAnchor: CGFloat = -10
 
-    static let activityIndicatorTopAnchorConstraint: CGFloat = 200
-    static let activityIndicatorLeadingAnchorConstraint: CGFloat = 100
-    static let activityIndicatorTrailingAnchorConstraint: CGFloat = -100
+    static let activityIndicatorTopAnchorConstraint: CGFloat = 350
+    static let activityIndicatorLeadingAnchorConstraint: CGFloat = 95
+    static let activityIndicatorTrailingAnchorConstraint: CGFloat = -95
 
     static let infoLabelNumberOfLines: Int = 3
     static let infoLabelFont: CGFloat = 15
