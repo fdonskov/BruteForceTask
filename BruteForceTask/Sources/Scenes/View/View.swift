@@ -13,6 +13,7 @@ class BruteForceView: UIView {
     var stackView: UIStackView = {
         let stack = UIStackView()
         stack.backgroundColor = .clear
+        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
@@ -35,7 +36,7 @@ class BruteForceView: UIView {
     
     var textFieldPassword: UITextField = {
         let textField = UITextField()
-        textField.backgroundColor = .systemGray
+        textField.backgroundColor = .lightGray
         textField.layer.cornerRadius = MetricSize.textFieldLayerCornerRadius
         textField.isSecureTextEntry = true
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +58,7 @@ class BruteForceView: UIView {
         let button = UIButton()
         button.tintColor = .white
         button.layer.cornerRadius = MetricSize.changeStatusButtonCornerRadius
-        button.backgroundColor = .blue
+        button.backgroundColor = .systemMint
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -163,8 +164,8 @@ struct MetricSize {
 
     static let textFieldLayerCornerRadius: CGFloat = 6
     static let textFieldTopAnchorConstraint: CGFloat = 50
-    static let textFieldLeadingAnchorConstraint: CGFloat = 100
-    static let textFieldTrailingAnchorConstraint: CGFloat = -100
+    static let textFieldLeadingAnchorConstraint: CGFloat = 95
+    static let textFieldTrailingAnchorConstraint: CGFloat = -95
 
     static let buttonColorReplacementLayerCornerRadius: CGFloat = 5
     static let buttonColorReplacementTopAnchorConstraint: CGFloat = 10

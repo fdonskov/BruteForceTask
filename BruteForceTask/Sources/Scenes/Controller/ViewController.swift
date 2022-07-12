@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         didSet {
             brutForceView?.backgroundColor = isBlack ? .white : .black
             brutForceView?.labelPassword.textColor = isBlack ? .black : .white
-            brutForceView?.buttonChangingBackgroundColor.backgroundColor = isBlack ? .systemOrange : .systemPink
+            brutForceView?.buttonChangingBackgroundColor.backgroundColor = isBlack ? .systemOrange : .systemPurple
         }
     }
     
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
             brutForceView?.textFieldPassword.isSecureTextEntry = true
             brutForceView?.buttonChangingBackgroundColor.isHidden = false
             brutForceView?.buttonStartBruteForce.isUserInteractionEnabled = false
-            brutForceView?.buttonStartBruteForce.setTitle("Собираю информацию о пароле...", for: .normal)
+            brutForceView?.buttonStartBruteForce.setTitle("Производится взлом...", for: .normal)
         case .stop:
             brutForceView?.activityIndicator.isHidden = true
             brutForceView?.activityIndicator.stopAnimating()
