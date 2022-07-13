@@ -17,7 +17,7 @@ class BruteForceView: UIView {
         return stack
     }()
     
-    var labelPassword: UILabel = {
+    var passwordLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = MetricSize.infoLabelNumberOfLines
         label.textColor = .black
@@ -34,7 +34,7 @@ class BruteForceView: UIView {
         return indicator
     }()
     
-    var textFieldPassword: UITextField = {
+    var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .lightGray
         textField.layer.cornerRadius = MetricSize.textFieldLayerCornerRadius
@@ -43,7 +43,7 @@ class BruteForceView: UIView {
         return textField
     }()
     
-    var buttonChangingBackgroundColor: UIButton = {
+    var changeBackgroundColorButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = MetricSize.buttonColorReplacementLayerCornerRadius
         button.setTitle("Сменить тему", for: .normal)
@@ -54,7 +54,7 @@ class BruteForceView: UIView {
         return button
     }()
     
-    var buttonStartBruteForce: UIButton = {
+    var startBruteForceButton: UIButton = {
         let button = UIButton()
         button.tintColor = .white
         button.layer.cornerRadius = MetricSize.changeStatusButtonCornerRadius
@@ -66,6 +66,7 @@ class BruteForceView: UIView {
     // MARK: - Initial
     init() {
         super.init(frame: .zero)
+        backgroundColor = .white
         setupHierarchy()
     }
 
@@ -76,14 +77,13 @@ class BruteForceView: UIView {
     
     // MARK: - SetupHierarchy
     func setupHierarchy() {
-        backgroundColor = .white
         addSubview(stackView)
         
         stackView.addSubview(activityIndicator)
-        stackView.addSubview(textFieldPassword)
-        stackView.addSubview(labelPassword)
-        stackView.addSubview(buttonStartBruteForce)
-        stackView.addSubview(buttonChangingBackgroundColor)
+        stackView.addSubview(passwordTextField)
+        stackView.addSubview(passwordLabel)
+        stackView.addSubview(startBruteForceButton)
+        stackView.addSubview(changeBackgroundColorButton)
         
         createConstraints()
     }
@@ -110,9 +110,9 @@ class BruteForceView: UIView {
     
     func constraintLabelPassword() {
         NSLayoutConstraint.activate([
-            labelPassword.topAnchor.constraint(equalTo: buttonStartBruteForce.bottomAnchor, constant: MetricSize.infoLabelTopAnchorConstraint),
-            labelPassword.leadingAnchor.constraint(equalTo: textFieldPassword.leadingAnchor),
-            labelPassword.trailingAnchor.constraint(equalTo: textFieldPassword.trailingAnchor)
+            passwordLabel.topAnchor.constraint(equalTo: startBruteForceButton.bottomAnchor, constant: MetricSize.infoLabelTopAnchorConstraint),
+            passwordLabel.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor),
+            passwordLabel.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor)
         ])
     }
     
@@ -126,25 +126,25 @@ class BruteForceView: UIView {
     
     func constraintTextFieldPassword() {
         NSLayoutConstraint.activate([
-            textFieldPassword.topAnchor.constraint(equalTo: activityIndicator.bottomAnchor, constant: MetricSize.textFieldTopAnchorConstraint),
-            textFieldPassword.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: MetricSize.textFieldLeadingAnchorConstraint),
-            textFieldPassword.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: MetricSize.textFieldTrailingAnchorConstraint)
+            passwordTextField.topAnchor.constraint(equalTo: activityIndicator.bottomAnchor, constant: MetricSize.textFieldTopAnchorConstraint),
+            passwordTextField.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: MetricSize.textFieldLeadingAnchorConstraint),
+            passwordTextField.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: MetricSize.textFieldTrailingAnchorConstraint)
         ])
     }
     
     func constraintButtonChangingBackgroundColor() {
         NSLayoutConstraint.activate([
-            buttonChangingBackgroundColor.topAnchor.constraint(equalTo: labelPassword.bottomAnchor, constant: MetricSize.buttonColorReplacementTopAnchorConstraint),
-            buttonChangingBackgroundColor.leadingAnchor.constraint(equalTo: textFieldPassword.leadingAnchor),
-            buttonChangingBackgroundColor.trailingAnchor.constraint(equalTo: textFieldPassword.trailingAnchor)
+            changeBackgroundColorButton.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: MetricSize.buttonColorReplacementTopAnchorConstraint),
+            changeBackgroundColorButton.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor),
+            changeBackgroundColorButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor)
         ])
     }
     
     func constraintButtonStartBruteForce() {
         NSLayoutConstraint.activate([
-            buttonStartBruteForce.topAnchor.constraint(equalTo: textFieldPassword.bottomAnchor, constant: MetricSize.changeStatusButtonTopAnchorConstraint),
-            buttonStartBruteForce.leadingAnchor.constraint(equalTo: textFieldPassword.leadingAnchor),
-            buttonStartBruteForce.trailingAnchor.constraint(equalTo: textFieldPassword.trailingAnchor)
+            startBruteForceButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: MetricSize.changeStatusButtonTopAnchorConstraint),
+            startBruteForceButton.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor),
+            startBruteForceButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor)
         ])
     }
 }
